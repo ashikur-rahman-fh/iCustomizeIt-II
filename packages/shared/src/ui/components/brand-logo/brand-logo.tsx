@@ -28,7 +28,7 @@ export function BrandLogo({ versions, href = '/', className, imageClassName }: B
         width={LOGO_NAVBAR_WIDTH}
         height={LOGO_NAVBAR_HEIGHT}
         priority
-        className={cn('h-8 w-auto', imageClassName)}
+        className={cn('h-16 w-auto', imageClassName)}
       />
     </Link>
   );

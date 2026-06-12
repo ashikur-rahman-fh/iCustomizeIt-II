@@ -44,6 +44,8 @@
 
   --shadow-soft: var(--shadow-soft);
   --shadow-card: var(--shadow-card);
+
+  --spacing-18: 4.5rem;
 }
 
 :root {
