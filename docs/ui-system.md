@@ -99,7 +99,7 @@ import '@i-customize-it/shared/ui/styles/globals.css';
 | **Button** | `rounded-md`; charcoal `default`; `brand` variant for red CTAs; `success` for green; link style uses brand red |
 | **Alert** | `rounded-lg`; light tinted backgrounds |
 | **Card** | `rounded-lg`; white, subtle border |
-| **Navbar** | Full-width, no bar radius; active link uses `bg-accent text-accent-foreground` |
+| **Navbar** | `variant="default"` (admin): full-width square bar, pill active state. `variant="ecommerce"` (main site): **floating glass island** (`rounded-2xl`, `bg-card/75`, `backdrop-blur-xl`, `shadow-card`), red→green accent hairline, **pill nav cluster** (active link = raised white pill on muted track), ghost mobile trigger, logo-forward mobile sheet. Use `MainSiteNavbar` in `frontend-main` for the public IA. |
 | **Input** | `rounded-md`; brand red focus ring |
 | **PasswordInput** | Password field with inline Eye / EyeOff toggle; `aria-label` for show/hide (no visible text on the button) |
 | **Badge** | `rounded-md`; `brand` variant for promotional tags |

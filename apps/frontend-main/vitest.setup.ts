@@ -1,6 +1,14 @@
 import '@testing-library/jest-dom/vitest';
 import { afterAll, afterEach, beforeAll, vi } from 'vitest';
 
+vi.mock('next/navigation', () => ({
+  usePathname: () => '/',
+  useRouter: () => ({
+    replace: vi.fn(),
+    push: vi.fn(),
+  }),
+}));
+
 vi.mock('next/font/google', () => ({
   Rubik: () => ({
     variable: '--font-sans-next',

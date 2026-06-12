@@ -11,29 +11,17 @@ import {
   CardTitle,
   ErrorState,
   LoadingState,
-  Navbar,
   PageShell,
 } from '@i-customize-it/shared/ui';
 import { useApi } from '@i-customize-it/shared/hooks/useApi';
-import { BrandLogo } from '@/components/BrandLogo';
+import { MainSiteNavbar } from '@/components/MainSiteNavbar';
 
 export function HomePage() {
   const { state, reload } = useApi(() => getHello());
   const isLoading = state.status === 'loading';
 
   return (
-    <PageShell
-      header={
-        <Navbar
-          appName="iCustomizeIt"
-          logo={<BrandLogo />}
-          items={[
-            { label: 'Home', href: '/', active: true },
-            { label: 'Dashboard', href: '/dashboard' },
-          ]}
-        />
-      }
-    >
+    <PageShell header={<MainSiteNavbar />}>
       <div className="space-y-6">
         <Card>
           <CardHeader>

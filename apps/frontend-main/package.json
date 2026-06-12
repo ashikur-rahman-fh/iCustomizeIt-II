@@ -20,6 +20,7 @@
   "dependencies": {
     "@i-customize-it/shared": "workspace:*",
     "@tailwindcss/postcss": "^4.3.0",
+    "lucide-react": "^1.16.0",
     "next": "16.2.6",
     "postcss": "^8.5.15",
     "react": "^19.2.6",

@@ -9,3 +9,16 @@ export const API_ROUTES = {
     changePassword: '/api/admin/auth/change-password/',
   },
 } as const;
+
+export const MAIN_APP_ROUTES = {
+  home: '/',
+  shop: '/shop',
+  startDesigning: '/start-designing',
+  about: '/about',
+} as const;
+
+export const MAIN_APP_NAV_ITEMS = [
+  { label: 'Shop', href: MAIN_APP_ROUTES.shop },
+  { label: 'Start Designing', href: MAIN_APP_ROUTES.startDesigning },
+  { label: 'About', href: MAIN_APP_ROUTES.about },
+] as const;
