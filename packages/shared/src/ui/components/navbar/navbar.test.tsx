@@ -38,4 +38,10 @@ describe('Navbar', () => {
     render(<Navbar appName="Main App" items={items} />);
     expect(screen.getByRole('button', { name: 'Open navigation menu' })).toBeInTheDocument();
   });
+
+  it('renders a custom logo when provided', () => {
+    render(<Navbar appName="Main App" items={items} logo={<a href="/">Brand logo</a>} />);
+    expect(screen.getByRole('link', { name: 'Brand logo' })).toBeInTheDocument();
+    expect(screen.queryByText('Main App')).not.toBeInTheDocument();
+  });
 });

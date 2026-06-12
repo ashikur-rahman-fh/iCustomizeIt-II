@@ -5,14 +5,18 @@ import {
   parseThemeMode,
   ThemeProvider,
 } from '@i-customize-it/shared/ui';
+import { createBrandMetadata } from '@i-customize-it/shared/brand';
 import '@i-customize-it/shared/ui/styles/globals.css';
 import { AdminAuthProvider } from '@/auth/AdminAuthProvider';
+import brandVersions from '@/brand/asset-versions.json';
 import './globals.css';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createBrandMetadata({
   title: 'Admin',
-  description: 'Admin sign-in and profile',
-};
+  description: 'iCustomizeIt admin sign-in and profile.',
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL,
+  versions: brandVersions,
+});
 
 export default function RootLayout({
   children,

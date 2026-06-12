@@ -71,11 +71,22 @@ export function buildContentSecurityPolicy(options = {}) {
   ].join('; ');
 }
 
+const BRAND_CACHE_CONTROL_PRODUCTION = 'public, max-age=31536000, immutable';
+const BRAND_CACHE_CONTROL_DEVELOPMENT = 'no-cache, must-revalidate';
+
 /** @type {import('next').Headers} */
 export function securityHeaders() {
-  const contentSecurityPolicy = buildContentSecurityPolicy();
+  const production = process.env.NODE_ENV === 'production';
+  const contentSecurityPolicy = buildContentSecurityPolicy({ isProduction: production });
+  const brandCacheControl = production
+    ? BRAND_CACHE_CONTROL_PRODUCTION
+    : BRAND_CACHE_CONTROL_DEVELOPMENT;
 
   return [
+    {
+      source: '/brand/:path*',
+      headers: [{ key: 'Cache-Control', value: brandCacheControl }],
+    },
     {
       source: '/:path*',
       headers: [
@@ -91,3 +102,5 @@ export function securityHeaders() {
     },
   ];
 }
+
+export { BRAND_CACHE_CONTROL_DEVELOPMENT, BRAND_CACHE_CONTROL_PRODUCTION };

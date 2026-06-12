@@ -1,5 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import { buildConnectSrc, buildContentSecurityPolicy, CSP_API_PLACEHOLDER } from './headers.mjs';
+import {
+  BRAND_CACHE_CONTROL_DEVELOPMENT,
+  BRAND_CACHE_CONTROL_PRODUCTION,
+  buildConnectSrc,
+  buildContentSecurityPolicy,
+  CSP_API_PLACEHOLDER,
+  securityHeaders,
+} from './headers.mjs';
 
 /** Arbitrary production API URL — tests behavior for any https origin, not a fixed deploy domain. */
 const SAMPLE_PRODUCTION_API = 'https://api.example.com';
@@ -69,5 +76,39 @@ describe('buildContentSecurityPolicy', () => {
   it('uses the production placeholder when API URL is missing', () => {
     const policy = buildContentSecurityPolicy({ apiBaseUrl: '', isProduction: true });
     expect(policy).toContain(originFrom(CSP_API_PLACEHOLDER));
+  });
+});
+
+describe('securityHeaders brand cache control', () => {
+  it('sets no-cache for /brand assets in development', () => {
+    const previousNodeEnv = process.env.NODE_ENV;
+    process.env.NODE_ENV = 'development';
+
+    try {
+      const headers = securityHeaders();
+      const brandRule = headers.find((rule) => rule.source === '/brand/:path*');
+      expect(brandRule?.headers).toContainEqual({
+        key: 'Cache-Control',
+        value: BRAND_CACHE_CONTROL_DEVELOPMENT,
+      });
+    } finally {
+      process.env.NODE_ENV = previousNodeEnv;
+    }
+  });
+
+  it('sets immutable long-term cache for /brand assets in production', () => {
+    const previousNodeEnv = process.env.NODE_ENV;
+    process.env.NODE_ENV = 'production';
+
+    try {
+      const headers = securityHeaders();
+      const brandRule = headers.find((rule) => rule.source === '/brand/:path*');
+      expect(brandRule?.headers).toContainEqual({
+        key: 'Cache-Control',
+        value: BRAND_CACHE_CONTROL_PRODUCTION,
+      });
+    } finally {
+      process.env.NODE_ENV = previousNodeEnv;
+    }
   });
 });

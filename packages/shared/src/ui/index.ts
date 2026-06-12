@@ -8,6 +8,7 @@ export {
   type AlertProps,
   type AlertVariant,
 } from './components/alert';
+export { BrandLogo, type BrandLogoProps } from './components/brand-logo';
 export { Navbar, type NavbarItem, type NavbarProps } from './components/navbar';
 export { PageShell, type PageShellProps } from './components/page-shell';
 export {

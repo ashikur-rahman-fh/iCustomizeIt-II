@@ -3,7 +3,6 @@
 import { getHello } from '@i-customize-it/shared/api/hello';
 import {
   Alert,
-  Badge,
   Button,
   Card,
   CardContent,
@@ -16,6 +15,7 @@ import {
   PageShell,
 } from '@i-customize-it/shared/ui';
 import { useApi } from '@i-customize-it/shared/hooks/useApi';
+import { BrandLogo } from '@/components/BrandLogo';
 
 export function HomePage() {
   const { state, reload } = useApi(() => getHello());
@@ -25,16 +25,12 @@ export function HomePage() {
     <PageShell
       header={
         <Navbar
-          appName="Main App"
+          appName="iCustomizeIt"
+          logo={<BrandLogo />}
           items={[
             { label: 'Home', href: '/', active: true },
             { label: 'Dashboard', href: '/dashboard' },
           ]}
-          actions={
-            <Badge variant="secondary" className="hidden sm:inline-flex">
-              iCustomizeIt
-            </Badge>
-          }
         />
       }
     >

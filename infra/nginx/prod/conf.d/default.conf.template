@@ -39,6 +39,14 @@ server {
 
     client_max_body_size ${CLIENT_MAX_BODY_SIZE};
 
+    location ~ ^/brand/ {
+        limit_req zone=general burst=20 nodelay;
+        proxy_pass http://main_frontend;
+        proxy_set_header X-Forwarded-Proto https;
+        include /etc/nginx/snippets/proxy-brand-assets-base.conf;
+        include /etc/nginx/snippets/proxy-brand-assets-cache.conf;
+    }
+
     location / {
         limit_req zone=general burst=20 nodelay;
         proxy_pass http://main_frontend;
@@ -63,6 +71,14 @@ server {
     include /etc/nginx/snippets/security-headers-prod.conf;
 
     client_max_body_size ${CLIENT_MAX_BODY_SIZE};
+
+    location ~ ^/brand/ {
+        limit_req zone=general burst=20 nodelay;
+        proxy_pass http://admin_frontend;
+        proxy_set_header X-Forwarded-Proto https;
+        include /etc/nginx/snippets/proxy-brand-assets-base.conf;
+        include /etc/nginx/snippets/proxy-brand-assets-cache.conf;
+    }
 
     location / {
         limit_req zone=general burst=20 nodelay;

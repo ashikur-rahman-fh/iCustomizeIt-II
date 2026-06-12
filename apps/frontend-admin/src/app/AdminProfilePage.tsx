@@ -20,6 +20,7 @@ import { useId, useState, type FormEvent } from 'react';
 import { ADMIN_AUTH_COPY } from '@/auth/messages';
 import { useAdminAuth } from '@/auth/AdminAuthProvider';
 import { RequireAdminAuth } from '@/auth/guards';
+import { BrandLogo } from '@/components/BrandLogo';
 
 function StatusBadge({ label, active }: { label: string; active: boolean }) {
   return (
@@ -104,7 +105,8 @@ export function AdminProfilePage() {
         data-testid="admin-profile-page"
         header={
           <Navbar
-            appName="Admin"
+            appName="iCustomizeIt Admin"
+            logo={<BrandLogo />}
             items={[{ label: 'Profile', href: '/', active: true }]}
             actions={
               <Button

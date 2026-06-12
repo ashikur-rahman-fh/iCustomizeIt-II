@@ -5,13 +5,17 @@ import {
   parseThemeMode,
   ThemeProvider,
 } from '@i-customize-it/shared/ui';
+import { createBrandMetadata } from '@i-customize-it/shared/brand';
 import '@i-customize-it/shared/ui/styles/globals.css';
+import brandVersions from '@/brand/asset-versions.json';
 import './globals.css';
 
-export const metadata: Metadata = {
-  title: 'Main App',
-  description: 'iCustomizeIt main frontend',
-};
+export const metadata: Metadata = createBrandMetadata({
+  title: 'iCustomizeIt',
+  description: 'Customize products your way.',
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL,
+  versions: brandVersions,
+});
 
 export default function RootLayout({
   children,

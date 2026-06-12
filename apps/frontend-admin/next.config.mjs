@@ -14,6 +14,14 @@ const nextConfig = {
   outputFileTracingRoot: path.join(__dirname, '../..'),
   transpilePackages: ['@i-customize-it/shared'],
   headers: securityHeaders,
+  images: {
+    minimumCacheTTL: 86400,
+    localPatterns: [
+      {
+        pathname: '/brand/**',
+      },
+    ],
+  },
 };
 
 export default nextConfig;

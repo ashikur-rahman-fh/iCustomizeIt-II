@@ -17,6 +17,7 @@ import Link from 'next/link';
 import { useId, useState, type FormEvent } from 'react';
 import { ADMIN_AUTH_COPY } from '@/auth/messages';
 import { RequireAdminAuth } from '@/auth/guards';
+import { BrandLogo } from '@/components/BrandLogo';
 
 export function ChangePasswordPage() {
   const [currentPassword, setCurrentPassword] = useState('');
@@ -87,7 +88,8 @@ export function ChangePasswordPage() {
         data-testid="admin-change-password-page"
         header={
           <Navbar
-            appName="Admin"
+            appName="iCustomizeIt Admin"
+            logo={<BrandLogo />}
             items={[
               { label: 'Profile', href: '/' },
               { label: ADMIN_AUTH_COPY.changePassword, href: '/change-password', active: true },

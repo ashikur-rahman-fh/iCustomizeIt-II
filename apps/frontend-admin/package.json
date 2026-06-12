@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev -H 0.0.0.0 -p 3001",
+    "prebuild": "node ../../infra/scripts/build/hash-brand-assets.mjs frontend-admin",
     "build": "next build",
     "start": "next start -H 0.0.0.0 -p 3001",
     "lint": "eslint . --max-warnings 0",
