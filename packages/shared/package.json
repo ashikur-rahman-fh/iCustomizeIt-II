@@ -15,6 +15,7 @@
     "./hooks/useApi": "./src/hooks/useApi.ts",
     "./ui": "./src/ui/index.ts",
     "./ui/theme": "./src/ui/theme/index.ts",
+    "./ui/theme/app-fonts": "./src/ui/theme/app-fonts.ts",
     "./ui/styles/globals.css": "./src/ui/styles/globals.css",
     "./components/Button": "./src/ui/components/button/index.ts",
     "./components/LoadingState": "./src/ui/components/loading-state/index.ts",

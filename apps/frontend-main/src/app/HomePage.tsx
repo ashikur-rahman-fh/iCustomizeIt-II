@@ -39,8 +39,8 @@ export function HomePage() {
           <CardHeader>
             <CardTitle>Shared UI</CardTitle>
             <CardDescription>
-              iCustomizeIt Default — muted and professional. Rebrand via{' '}
-              <code className="font-mono text-xs text-muted-foreground">theme.css</code> tokens.
+              Customize Balanced — neutral chrome with brand red and green accents. Tokens live in{' '}
+              <code className="font-mono text-xs text-muted-foreground">theme.css</code>.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -50,8 +50,11 @@ export function HomePage() {
               description="Some features may be temporarily unavailable."
             />
             <div className="flex flex-wrap gap-2">
-              <Button variant="default" size="md">
+              <Button variant="brand" size="md">
                 Continue
+              </Button>
+              <Button variant="default" size="md">
+                Default
               </Button>
               <Button variant="secondary" size="sm">
                 Secondary

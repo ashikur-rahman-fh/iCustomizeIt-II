@@ -23,6 +23,9 @@ describe('Button', () => {
 
     rerender(<Button variant="success">Save</Button>);
     expect(screen.getByRole('button')).toHaveClass('bg-success');
+
+    rerender(<Button variant="brand">Shop now</Button>);
+    expect(screen.getByRole('button')).toHaveClass('bg-accent-foreground');
   });
 
   it('supports disabled state', () => {

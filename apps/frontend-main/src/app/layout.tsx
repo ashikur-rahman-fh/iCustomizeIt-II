@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { appFontClassName } from '@i-customize-it/shared/ui/theme/app-fonts';
 import {
   getThemeHtmlClass,
   getThemeProviderModeConfig,
@@ -26,7 +27,11 @@ export default function RootLayout({
   const themeProviderModeConfig = getThemeProviderModeConfig(themeMode);
 
   return (
-    <html lang="en" suppressHydrationWarning className={getThemeHtmlClass(themeMode)}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${getThemeHtmlClass(themeMode)} ${appFontClassName}`}
+    >
       <body>
         <ThemeProvider {...themeProviderModeConfig}>{children}</ThemeProvider>
       </body>

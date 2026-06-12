@@ -14,6 +14,7 @@ const buttonVariants = cva('', {
       destructive: '',
       warning: 'bg-warning text-warning-foreground hover:bg-warning/90',
       success: 'bg-success text-success-foreground hover:bg-success/90',
+      brand: 'bg-accent-foreground text-white hover:bg-accent-foreground/90',
     },
     size: {
       sm: '',
@@ -41,21 +42,33 @@ const variantMap = {
   destructive: 'destructive',
   warning: 'default',
   success: 'default',
+  brand: 'default',
 } as const;
+
+const customVariantStyles = new Set<keyof typeof variantMap>(['warning', 'success', 'brand']);
 
 export type ButtonProps = Omit<ShadcnButtonProps, 'size' | 'variant'> &
   VariantProps<typeof buttonVariants> & {
     size?: 'sm' | 'md' | 'lg';
-    variant?: 'default' | 'secondary' | 'outline' | 'ghost' | 'destructive' | 'warning' | 'success';
+    variant?:
+      | 'default'
+      | 'secondary'
+      | 'outline'
+      | 'ghost'
+      | 'destructive'
+      | 'warning'
+      | 'success'
+      | 'brand';
   };
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = 'default', size = 'md', ...props }, ref) => {
-    const shadcnVariant: ShadcnButtonProps['variant'] =
-      variant === 'warning' || variant === 'success' ? 'default' : variantMap[variant];
+    const resolvedVariant = variant ?? 'default';
+    const shadcnVariant: ShadcnButtonProps['variant'] = variantMap[resolvedVariant];
     const shadcnSize = sizeMap[size];
-    const customVariantClass =
-      variant === 'warning' || variant === 'success' ? buttonVariants({ variant }) : '';
+    const customVariantClass = customVariantStyles.has(resolvedVariant)
+      ? buttonVariants({ variant: resolvedVariant })
+      : '';
 
     return (
       <ShadcnButton

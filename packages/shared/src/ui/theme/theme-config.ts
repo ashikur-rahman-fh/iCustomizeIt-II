@@ -1,7 +1,7 @@
-/** iCustomizeIt default theme — muted, light, professional. */
-export const defaultThemeId = 'calm-neutral-default' as const;
+/** Customize Balanced — neutral chrome with brand red/green accents. */
+export const defaultThemeId = 'customize-balanced' as const;
 
-export const defaultThemeName = 'iCustomizeIt Default' as const;
+export const defaultThemeName = 'Customize Balanced' as const;
 
 export const defaultThemeConfig = {
   attribute: 'class' as const,

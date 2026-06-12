@@ -32,7 +32,7 @@ Workspace package `@i-customize-it/shared` provides:
 - **API client layer** — Axios-based, type-safe HTTP in `packages/shared/src/api/` (never import Axios in frontend apps)
 - Preconfigured clients: `backendMainApi` (stateless public API), `backendAdminApi` (session + CSRF for admin auth)
 - Thin endpoint helpers (`getHello`, `adminAuthApi`)
-- **Shared UI** (`packages/shared/src/ui/`) — **iCustomizeIt Default** theme (muted slate primary, soft neutrals, Inter + JetBrains Mono, light/dark). Tailwind v4, shadcn primitives, Basecoat CSS. Import via `@i-customize-it/shared/ui`. See [`ui-system.md`](ui-system.md).
+- **Shared UI** (`packages/shared/src/ui/`) — **Customize Balanced** theme (charcoal primary, brand red/green accents, Rubik + JetBrains Mono via `next/font`, light/dark). Tailwind v4, shadcn primitives, Basecoat CSS. Import via `@i-customize-it/shared/ui`. See [`ui-system.md`](ui-system.md).
 - Hooks (`useApi`)
 - Types and route constants
 - CSP / security headers for Next.js

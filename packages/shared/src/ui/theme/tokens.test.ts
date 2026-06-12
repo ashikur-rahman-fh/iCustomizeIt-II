@@ -11,10 +11,10 @@ const themeCss = readFileSync(
   'utf8',
 );
 
-describe('iCustomizeIt default theme tokens', () => {
+describe('Customize Balanced theme tokens', () => {
   it('exports a stable theme id and display name', () => {
-    expect(defaultThemeId).toBe('calm-neutral-default');
-    expect(defaultThemeName).toBe('iCustomizeIt Default');
+    expect(defaultThemeId).toBe('customize-balanced');
+    expect(defaultThemeName).toBe('Customize Balanced');
   });
 
   it('defines semantic color variables in theme.css', () => {
@@ -23,20 +23,22 @@ describe('iCustomizeIt default theme tokens', () => {
     }
   });
 
-  it('uses muted slate primary accent in light mode', () => {
-    expect(themeCss).toMatch(/--primary:\s*215 24% 34%/);
-    expect(themeCss).toMatch(/--background:\s*210 20% 98%/);
+  it('uses neutral charcoal primary and brand accent in light mode', () => {
+    expect(themeCss).toMatch(/--primary:\s*220 15% 22%/);
+    expect(themeCss).toMatch(/--background:\s*0 0% 99%/);
+    expect(themeCss).toMatch(/--accent-foreground:\s*358 74% 47%/);
   });
 
-  it('uses soft primary accent in dark mode', () => {
-    expect(themeCss).toMatch(/\.dark[\s\S]*--primary:\s*213 20% 74%/);
+  it('uses light neutral primary and softened brand accent in dark mode', () => {
+    expect(themeCss).toMatch(/\.dark[\s\S]*--primary:\s*0 0% 92%/);
+    expect(themeCss).toMatch(/\.dark[\s\S]*--accent-foreground:\s*358 65% 62%/);
   });
 
   it('defines typography CSS variables', () => {
     expect(themeCss).toContain('--font-sans:');
-    expect(themeCss).toContain('Inter');
+    expect(themeCss).toContain('--font-sans-next');
     expect(themeCss).toContain('--font-mono:');
-    expect(themeCss).toContain('JetBrains Mono');
+    expect(themeCss).toContain('--font-mono-next');
     expect(typographyTokens.sans).toBe('--font-sans');
     expect(typographyTokens.mono).toBe('--font-mono');
   });
@@ -49,9 +51,9 @@ describe('iCustomizeIt default theme tokens', () => {
   it('defines moderate radius scale in theme.css', () => {
     expect(themeCss).toContain('--radius-xs: 0.25rem');
     expect(themeCss).toContain('--radius-sm: 0.375rem');
-    expect(themeCss).toContain('--radius-md: 0.5rem');
-    expect(themeCss).toContain('--radius-lg: 0.625rem');
-    expect(themeCss).toContain('--radius-xl: 0.75rem');
-    expect(themeCss).toContain('--radius: 0.5rem');
+    expect(themeCss).toContain('--radius-md: 0.625rem');
+    expect(themeCss).toContain('--radius-lg: 0.75rem');
+    expect(themeCss).toContain('--radius-xl: 0.875rem');
+    expect(themeCss).toContain('--radius: 0.625rem');
   });
 });

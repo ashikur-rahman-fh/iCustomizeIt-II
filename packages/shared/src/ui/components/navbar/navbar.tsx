@@ -48,7 +48,7 @@ function NavLinks({
               'cursor-pointer rounded-md px-3 py-2 text-sm font-medium transition-colors duration-150',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background',
               item.active
-                ? 'bg-muted text-foreground'
+                ? 'bg-accent text-accent-foreground'
                 : 'text-muted-foreground hover:bg-muted/80 hover:text-foreground',
             )}
           >

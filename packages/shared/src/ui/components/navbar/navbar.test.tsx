@@ -23,7 +23,9 @@ describe('Navbar', () => {
 
   it('marks active item correctly', () => {
     render(<Navbar appName="Main App" items={items} />);
-    expect(screen.getByRole('link', { name: 'Home' })).toHaveAttribute('aria-current', 'page');
+    const homeLink = screen.getByRole('link', { name: 'Home' });
+    expect(homeLink).toHaveAttribute('aria-current', 'page');
+    expect(homeLink).toHaveClass('bg-accent', 'text-accent-foreground');
     expect(screen.getByRole('link', { name: 'Dashboard' })).not.toHaveAttribute('aria-current');
   });
 

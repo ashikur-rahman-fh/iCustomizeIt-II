@@ -15,6 +15,10 @@ describe('Badge', () => {
 
     rerender(<Badge variant="warning">Warn</Badge>);
     expect(screen.getByText('Warn')).toHaveClass('bg-warning');
+
+    rerender(<Badge variant="brand">New</Badge>);
+    expect(screen.getByText('New')).toHaveClass('bg-accent');
+    expect(screen.getByText('New')).toHaveClass('text-accent-foreground');
   });
 
   it('supports custom className', () => {
